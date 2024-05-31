@@ -15,6 +15,14 @@ export function useTransactionsByEmployee(): TransactionsByEmployeeResult {
           employeeId,
         }
       )
+      if(employeeId !== " "){
+        const data = await fetchWithCache<Transaction[], RequestByEmployeeParams>(
+          "transactionsByEmployee",
+          {
+            employeeId,
+          }
+        )
+      }
 
       setTransactionsByEmployee(data)
     },
